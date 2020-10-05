@@ -65,6 +65,12 @@ public class Tree : MonoBehaviour
          {        
             StopBurning();
          }
+
+        if (TreesController.instance && TreesController.instance.isCutting)
+        {
+            Destroy(gameObject);
+            TreesController.instance.RemoveTree(gameObject);
+        }
     }
 
     public void OnMouseOver()
