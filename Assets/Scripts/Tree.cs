@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Tree : MonoBehaviour
@@ -55,4 +58,32 @@ public class Tree : MonoBehaviour
         state = State.healthy;
         GetComponent<SpriteRenderer>().color = Color.white;
     }
+
+    public void OnMouseDown()
+    {
+        if(TreesController.instance && TreesController.instance.isWatering)
+         {        
+            StopBurning();
+         }
+
+        if (TreesController.instance && TreesController.instance.isCutting)
+        {
+            Destroy(gameObject);
+            TreesController.instance.RemoveTree(gameObject);
+        }
+    }
+
+    public void OnMouseOver()
+    {
+        if (TreesController.instance && TreesController.instance.isWatering)
+        {
+            GetComponent<SpriteRenderer>().color = Color.blue;
+        }
+    }
+
+    public void OnMouseExit()
+    {
+        GetComponent<SpriteRenderer>().color = state == State.burning ? Color.red : Color.white;
+    }
+
 }

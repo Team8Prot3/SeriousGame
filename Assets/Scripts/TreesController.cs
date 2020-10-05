@@ -45,6 +45,12 @@ public class TreesController : MonoBehaviour
     private bool isPlanting;
     private GameObject heldTree;
 
+    // Watering
+    public bool isWatering;
+
+    //Cutting
+    public bool isCutting;
+
 
     // Start planting a tree
     public void Plant() {
@@ -87,6 +93,20 @@ public class TreesController : MonoBehaviour
     public void RemoveTree(GameObject tree)
     {
         treesList.Remove(tree);
+    }
+
+    public void Water()
+    {
+        isWatering = true;
+        isCutting = false;
+
+    }
+
+    public void Cut()
+    {
+        isCutting = true;
+        isWatering = false;
+
     }
 
     // Start is called before the first frame update
@@ -141,6 +161,40 @@ public class TreesController : MonoBehaviour
             }
             else
                 heldTree.GetComponent<SpriteRenderer>().color = Color.gray;
+        }
+
+        //Water chosen tree
+        if(isWatering)
+        {
+            // Get mousepos
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            if (IsInCircularRange(mousePos))
+            {
+                // Left mouse click
+                if (Input.GetMouseButtonDown(0))
+                {
+                    isWatering = false;
+                }
+            }
+
+        }
+
+        //Cut chosen tree
+        if (isCutting)
+        {
+            // Get mousepos
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            if (IsInCircularRange(mousePos))
+            {
+                // Left mouse click
+                if (Input.GetMouseButtonDown(0))
+                {
+                    isCutting = false;
+                }
+            }
+
         }
     }
 
