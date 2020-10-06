@@ -216,14 +216,11 @@ public class TreesController : MonoBehaviour
             // Get mousepos
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            if (IsInCircularRange(mousePos))
-            {
                 // Left mouse click
                 if (Input.GetMouseButtonDown(0))
                 {
                     canExplore = false;
                 }
-            }
 
         }
     }

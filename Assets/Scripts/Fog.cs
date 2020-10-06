@@ -31,7 +31,9 @@ public class Fog : MonoBehaviour
 		colors = new Color[vertices.Length];
 		for (int i = 0; i < colors.Length; i++)
 		{
-			colors[i] = Color.black;
+			Vector2 v = fogPlane.transform.TransformPoint(vertices[i]);
+			if(IsInRange(v))
+				colors[i] = Color.black;
 		}
 		UpdateColor();
 	}
@@ -63,5 +65,13 @@ public class Fog : MonoBehaviour
 
 		}
 
+	}
+
+	private bool IsInRange(Vector2 _pos)
+	{
+		if (Vector2.Distance(_pos, new Vector2(0, -6)) < 4.5 && _pos.y > -10)
+			return true;
+		else
+			return false;
 	}
 }
