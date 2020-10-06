@@ -51,6 +51,9 @@ public class TreesController : MonoBehaviour
     //Cutting
     public bool isCutting;
 
+    //exploring
+    public bool canExplore;
+
 
     // Start planting a tree
     public void Plant() {
@@ -99,6 +102,15 @@ public class TreesController : MonoBehaviour
     {
         isWatering = true;
         isCutting = false;
+        canExplore = false;
+
+    }
+
+    public void Explore()
+    {
+        canExplore = true;
+        isWatering = false;
+        isCutting = false;
 
     }
 
@@ -106,6 +118,7 @@ public class TreesController : MonoBehaviour
     {
         isCutting = true;
         isWatering = false;
+        canExplore = false;
 
     }
 
@@ -192,6 +205,23 @@ public class TreesController : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     isCutting = false;
+                }
+            }
+
+        }
+
+        //Explore area
+        if (canExplore)
+        {
+            // Get mousepos
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            if (IsInCircularRange(mousePos))
+            {
+                // Left mouse click
+                if (Input.GetMouseButtonDown(0))
+                {
+                    canExplore = false;
                 }
             }
 
