@@ -905,6 +905,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1058303138}
+        m_MethodName: ActivateCoolDown
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 991882970}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &991882971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,6 +993,7 @@ MonoBehaviour:
   fireStartPos: {x: 2.5, y: -2.21}
   fireSpreadRadius: 2
   isWatering: 0
+  wateringRadius: 1
   isCutting: 0
 --- !u!4 &1058303137
 Transform:
