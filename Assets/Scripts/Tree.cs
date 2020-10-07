@@ -61,11 +61,6 @@ public class Tree : MonoBehaviour
 
     public void OnMouseDown()
     {
-       /* if(TreesController.instance && TreesController.instance.isWatering)
-         {        
-            StopBurning();
-         }*/
-
         if (TreesController.instance && TreesController.instance.isCutting)
         {
             Destroy(gameObject);
