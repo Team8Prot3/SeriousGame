@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,6 +56,7 @@ public class TreesController : MonoBehaviour
     public bool isWatering;
     [Header("Water Settings")]
     public float wateringRadius;
+    private Color waterCircleColor = new Color(0, 0.5f, 1, 0.5f);
 
     // Cutting
     [HideInInspector]
@@ -67,6 +69,7 @@ public class TreesController : MonoBehaviour
     public float exploringRadius;
     public GameObject explorationInfoPanel;
     public float infoDisplayTime = 10f;
+    private Color exploreCircleColor = new Color(0.7924f, 0.4182f, 0.3924f, 0.5f);
 
 
     public List<GameObject> GetTreesList() {
@@ -129,7 +132,7 @@ public class TreesController : MonoBehaviour
         isCutting = false;
         isPlanting = false;
         isExploring = false;
-        DisplayCircleArea(wateringRadius);
+        DisplayCircleArea(wateringRadius, waterCircleColor);
     }
 
     public void Cut()
@@ -147,12 +150,13 @@ public class TreesController : MonoBehaviour
         isPlanting = false;
         isWatering = false;
         isCutting = false;
-        DisplayCircleArea(exploringRadius);
+        DisplayCircleArea(exploringRadius, exploreCircleColor);
     }
 
-    public void DisplayCircleArea(float radius) 
+    public void DisplayCircleArea(float radius, Color color) 
     {
         circleArea.SetActive(true);
+        circleArea.GetComponent<SpriteRenderer>().color = color;
         circleArea.transform.localScale = Vector2.one * radius;
     }
 
@@ -168,11 +172,11 @@ public class TreesController : MonoBehaviour
         treesParent = new GameObject("TreesParent");
         if (minInitNum > 0 && minInitNum <= maxInitNum)
         {
-            for (int i = 0; i < Random.Range(minInitNum, maxInitNum + 1); i++)
+            for (int i = 0; i < UnityEngine.Random.Range(minInitNum, maxInitNum + 1); i++)
             {
                 Vector2 treePos;
                 while (true) {
-                    treePos = circularRangeCenter + Random.insideUnitCircle * circularRangeRadius;
+                    treePos = circularRangeCenter + UnityEngine.Random.insideUnitCircle * circularRangeRadius;
                     if (treePos.y > circularRangeBottom)
                         break;
                 }
