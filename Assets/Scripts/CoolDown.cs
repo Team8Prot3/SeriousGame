@@ -20,5 +20,6 @@ public class CoolDown : MonoBehaviour
         yield return new WaitForSeconds(cooldownTime);
 
         b.interactable = true;
+
     }
 }

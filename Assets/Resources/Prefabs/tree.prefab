@@ -95,8 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8a6e92dd7326a642b87cac0d996e321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burningTime: 3
-  fireSpreadTime: 2
+  mutationProbability: 1
+  mutationIntervalTime: 2.5
+  burningTime: 3.5
+  fireSpreadTimeHealthy: 2
+  fireSpreadTimeUnhealthy: 1
 --- !u!58 &7011730270448377058
 CircleCollider2D:
   m_ObjectHideFlags: 0
