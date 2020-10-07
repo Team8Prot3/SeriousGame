@@ -61,29 +61,16 @@ public class Tree : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if(TreesController.instance && TreesController.instance.isWatering)
+       /* if(TreesController.instance && TreesController.instance.isWatering)
          {        
             StopBurning();
-         }
+         }*/
 
         if (TreesController.instance && TreesController.instance.isCutting)
         {
             Destroy(gameObject);
             TreesController.instance.RemoveTree(gameObject);
         }
-    }
-
-    public void OnMouseOver()
-    {
-        if (TreesController.instance && TreesController.instance.isWatering)
-        {
-            GetComponent<SpriteRenderer>().color = Color.blue;
-        }
-    }
-
-    public void OnMouseExit()
-    {
-        GetComponent<SpriteRenderer>().color = state == State.burning ? Color.red : Color.white;
     }
 
 }

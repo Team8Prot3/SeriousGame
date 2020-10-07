@@ -47,6 +47,7 @@ public class TreesController : MonoBehaviour
 
     // Watering
     public bool isWatering;
+    public float wateringRadius;
 
     //Cutting
     public bool isCutting;
@@ -174,6 +175,11 @@ public class TreesController : MonoBehaviour
                 // Left mouse click
                 if (Input.GetMouseButtonDown(0))
                 {
+
+                    foreach (GameObject tree in treesList)
+                        if (Vector2.Distance(mousePos, tree.transform.position) < wateringRadius)
+                            tree.GetComponent<Tree>().StopBurning();
+
                     isWatering = false;
                 }
             }
