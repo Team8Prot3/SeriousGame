@@ -1470,6 +1470,10 @@ MonoBehaviour:
   exploringRadius: 2
   explorationInfoPanel: {fileID: 1098249316}
   infoDisplayTime: 10
+  waterAudio: {fileID: 8300000, guid: 5ea81a145cb3ea34295988f9b1377438, type: 3}
+  cutAudio: {fileID: 8300000, guid: 129303f86efc22540bfabb6e25204075, type: 3}
+  surveyAudio: {fileID: 8300000, guid: 39339d337de3bbc41bbce0964467b6c5, type: 3}
+  plantAudio: {fileID: 8300000, guid: 862f941a9f716214a91ecf7b02bff420, type: 3}
 --- !u!4 &1058303137
 Transform:
   m_ObjectHideFlags: 0
