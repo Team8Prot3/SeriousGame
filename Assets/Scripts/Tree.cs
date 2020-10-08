@@ -21,6 +21,8 @@ public class Tree : MonoBehaviour
     public float burningTime;
     public float fireSpreadTimeHealthy;
     public float fireSpreadTimeUnhealthy;
+    public float fireSpreadRadiusHealthy;
+    public float fireSpreadRadiusUnhealthy;
     public AudioClip fireAudio;
 
     private float burningTimer;
@@ -67,8 +69,16 @@ public class Tree : MonoBehaviour
             fireSpreadTimer -= Time.deltaTime;
             if (fireSpreadTimer <= 0)
             {
-                fireSpreadTimer = fireSpreadTimeHealthy;
-                TreesController.instance.SpreadFire(transform.position);
+                if (preState == State.healthy)
+                {
+                    fireSpreadTimer = fireSpreadTimeHealthy;
+                    TreesController.instance.SpreadFire(transform.position, fireSpreadRadiusHealthy);
+                }
+                else
+                {
+                    fireSpreadTimer = fireSpreadTimeUnhealthy;
+                    TreesController.instance.SpreadFire(transform.position, fireSpreadRadiusUnhealthy);
+                }
             }
 
         }
@@ -87,19 +97,20 @@ public class Tree : MonoBehaviour
         ChangeStateTo(State.burning);
 
         audioSource.PlayOneShot(fireAudio, 0.7F);
-        burningTimer = burningTime;
-        fireSpreadTimer = fireSpreadTimeHealthy;
         GetComponent<SpriteRenderer>().color = Color.red;
+
+        burningTimer = burningTime;
+        if(preState == State.healthy)
+            fireSpreadTimer = fireSpreadTimeHealthy;
+        else
+            fireSpreadTimer = fireSpreadTimeUnhealthy;
     }
 
     public void StopBurning()
     {
         if (state == State.burning) {
             ChangeStateTo(preState);
-            if(state == State.healthy)
-                GetComponent<SpriteRenderer>().color = Color.white;
-            else
-                GetComponent<SpriteRenderer>().color = Color.Lerp(Color.white, Color.gray, 0.5f);
+            GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
 
@@ -122,4 +133,12 @@ public class Tree : MonoBehaviour
         return state;
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        if (state == State.healthy || (state == State.burning && preState == State.healthy))
+            Gizmos.DrawWireSphere(transform.position, fireSpreadRadiusHealthy);
+        else
+            Gizmos.DrawWireSphere(transform.position, fireSpreadRadiusUnhealthy);
+    }
 }

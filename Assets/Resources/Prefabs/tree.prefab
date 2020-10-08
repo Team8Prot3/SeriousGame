@@ -102,6 +102,8 @@ MonoBehaviour:
   burningTime: 3.5
   fireSpreadTimeHealthy: 2
   fireSpreadTimeUnhealthy: 1
+  fireSpreadRadiusHealthy: 2
+  fireSpreadRadiusUnhealthy: 3
   fireAudio: {fileID: 8300000, guid: c3c21191e75c5a54d80bf23ef8f8f9db, type: 3}
 --- !u!58 &7011730270448377058
 CircleCollider2D:

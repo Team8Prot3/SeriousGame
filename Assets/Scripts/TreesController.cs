@@ -41,7 +41,6 @@ public class TreesController : MonoBehaviour
     // Fire
     [Header("Fire Settings")]
     public Vector2 fireStartPos;
-    public float fireSpreadRadius;
 
     // Trees
     private GameObject treesParent;
@@ -125,10 +124,10 @@ public class TreesController : MonoBehaviour
     }
 
     // Burn trees in spread range
-    public void SpreadFire(Vector2 startPos)
+    public void SpreadFire(Vector2 startPos, float radius)
     {
         foreach (GameObject tree in treesList)
-            if (Vector2.Distance(startPos, tree.transform.position) < fireSpreadRadius)
+            if (Vector2.Distance(startPos, tree.transform.position) < radius)
                 tree.GetComponent<Tree>().StartBurning();
     }
 
@@ -175,6 +174,7 @@ public class TreesController : MonoBehaviour
     {
         circleArea.SetActive(false);
     }
+
 
     // Start is called before the first frame update
     void Start()
@@ -360,10 +360,6 @@ public class TreesController : MonoBehaviour
 
         // Draw the burning point
         Gizmos.DrawSphere(fireStartPos, 0.2f);
-
-        // Draw spread circle
-        foreach (GameObject tree in treesList)
-            Gizmos.DrawWireSphere(tree.transform.position, fireSpreadRadius);
     }
 
     private bool IsInCircularRange(Vector2 _pos)
