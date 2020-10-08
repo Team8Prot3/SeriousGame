@@ -8,10 +8,12 @@ public class Fire : MonoBehaviour
     public int fireProbability = 10;    // 0% ~ 100%
     public float fireCheckIntervalTime = 2.5f;
     private float fireCheckTimer;
+    private List<GameObject> treesList;
 
     void Start()
     {
         fireCheckTimer = fireCheckIntervalTime;
+        treesList = TreesController.instance.GetTreesList();
     }
 
     void Update()
@@ -20,9 +22,14 @@ public class Fire : MonoBehaviour
         if (fireCheckTimer <= 0)
         {
             fireCheckTimer = fireCheckIntervalTime;
-            int rnum = Random.Range(0, 100);
-            if (rnum < fireProbability)
-                TreesController.instance.StartFire();
+            RandomFire();
         }
+    }
+
+    void RandomFire()
+    {
+        int rnum = Random.Range(0, 100);
+        if (rnum < fireProbability)
+            treesList[Random.Range(0, treesList.Count)].GetComponent<Tree>().StartBurning();
     }
 }

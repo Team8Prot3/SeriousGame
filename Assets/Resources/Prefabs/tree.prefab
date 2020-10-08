@@ -97,13 +97,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mutationProbability: 1
-  mutationIntervalTime: 2.5
+  mutationIntervalTime: 2
   unhealthySprite: {fileID: 21300000, guid: 67b9bea1ff17ef648bbe442142078a2a, type: 3}
-  burningTime: 3.5
-  fireSpreadTimeHealthy: 2
+  burningTime: 2.5
+  fireSpreadTimeHealthy: 1.5
   fireSpreadTimeUnhealthy: 1
-  fireSpreadRadiusHealthy: 2
-  fireSpreadRadiusUnhealthy: 3
+  fireSpreadRadiusHealthy: 2.5
+  fireSpreadRadiusUnhealthy: 3.5
   fireAudio: {fileID: 8300000, guid: c3c21191e75c5a54d80bf23ef8f8f9db, type: 3}
 --- !u!58 &7011730270448377058
 CircleCollider2D:

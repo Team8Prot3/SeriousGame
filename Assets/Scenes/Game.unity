@@ -428,7 +428,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 120, y: 20}
+  m_SizeDelta: {x: 363, y: 219}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &359347668
 MonoBehaviour:
@@ -451,18 +451,22 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
-    m_FontStyle: 0
+    m_FontSize: 48
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
-    m_Alignment: 3
+    m_MaxSize: 64
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: ExplorationInfo
+    m_LineSpacing: 1.5
+  m_Text: 'Exploration Info
+
+    Exploration Info
+
+    Exploration Info'
 --- !u!222 &359347669
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -896,6 +900,7 @@ GameObject:
   - component: {fileID: 794712663}
   - component: {fileID: 794712662}
   - component: {fileID: 794712661}
+  - component: {fileID: 794712664}
   m_Layer: 5
   m_Name: ButtonCut
   m_TagString: Untagged
@@ -977,7 +982,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1058303138}
+      - m_Target: {fileID: 794712664}
         m_MethodName: ActivateCoolDown
         m_Mode: 2
         m_Arguments:
@@ -1025,6 +1030,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794712659}
   m_CullTransparentMesh: 0
+--- !u!114 &794712664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794712659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0e460ee04b3b7449e611decaef560a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 1.5
 --- !u!1 &820673461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,6 +1203,7 @@ GameObject:
   - component: {fileID: 890919757}
   - component: {fileID: 890919756}
   - component: {fileID: 890919755}
+  - component: {fileID: 890919758}
   m_Layer: 5
   m_Name: ButtonExplore
   m_TagString: Untagged
@@ -1266,7 +1285,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1058303138}
+      - m_Target: {fileID: 890919758}
         m_MethodName: ActivateCoolDown
         m_Mode: 2
         m_Arguments:
@@ -1314,6 +1333,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890919753}
   m_CullTransparentMesh: 0
+--- !u!114 &890919758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890919753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0e460ee04b3b7449e611decaef560a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 5
 --- !u!1 &919497397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,6 +1726,7 @@ GameObject:
   - component: {fileID: 991882972}
   - component: {fileID: 991882971}
   - component: {fileID: 991882970}
+  - component: {fileID: 991882973}
   m_Layer: 5
   m_Name: ButtonPlant
   m_TagString: Untagged
@@ -1775,7 +1808,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1058303138}
+      - m_Target: {fileID: 991882973}
         m_MethodName: ActivateCoolDown
         m_Mode: 2
         m_Arguments:
@@ -1823,6 +1856,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991882968}
   m_CullTransparentMesh: 0
+--- !u!114 &991882973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991882968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0e460ee04b3b7449e611decaef560a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 2.5
 --- !u!1 &1010146600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1966,7 +2012,7 @@ MonoBehaviour:
     type: 3}
   circleArea: {fileID: 200353247}
   circularRangeCenter: {x: 0, y: 0}
-  circularRangeRadius: 9.5
+  circularRangeRadius: 9.8
   circularRangeBottom: -7.42
   minInitNum: 20
   maxInitNum: 25
@@ -1979,7 +2025,7 @@ MonoBehaviour:
   cutPrefab: {fileID: 6405693801454088381, guid: 1acff62a6aec4a1478e532161e86681c,
     type: 3}
   isExploring: 0
-  exploringRadius: 2
+  exploringRadius: 3.5
   explorationInfoPanel: {fileID: 1098249316}
   infoDisplayTime: 4
   waterAudio: {fileID: 8300000, guid: 5ea81a145cb3ea34295988f9b1377438, type: 3}
@@ -2025,8 +2071,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cae2411577cfe74ea80ef6521b126d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireProbability: 10
-  fireCheckIntervalTime: 2.5
+  fireProbability: 15
+  fireCheckIntervalTime: 2
 --- !u!82 &1058303140
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3070,6 +3116,7 @@ GameObject:
   - component: {fileID: 1674841641}
   - component: {fileID: 1674841640}
   - component: {fileID: 1674841639}
+  - component: {fileID: 1674841642}
   m_Layer: 5
   m_Name: ButtonWater
   m_TagString: Untagged
@@ -3151,7 +3198,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1058303138}
+      - m_Target: {fileID: 1674841642}
         m_MethodName: ActivateCoolDown
         m_Mode: 2
         m_Arguments:
@@ -3199,6 +3246,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674841637}
   m_CullTransparentMesh: 0
+--- !u!114 &1674841642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674841637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0e460ee04b3b7449e611decaef560a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 5
 --- !u!1 &1747784925
 GameObject:
   m_ObjectHideFlags: 0

@@ -328,17 +328,40 @@ public class TreesController : MonoBehaviour
             }
         }
 
+        int prNum;
+        if (burningNum > 0)
+            prNum = 100;
+        else
+            prNum = 5 * healthyNum + 10 * unhealthyNum;
+
         // Info text
-        string info = "Survey\n"
-        + "\nHealthy:\t" + healthyNum
-        + "\nUnhealthy:\t" + unhealthyNum
-        + "\nBurning:\t" + burningNum
-        + "\nFire risk level:\t" + "High"
+        string prtext;
+        if (prNum >= 20)
+            prtext = "<color=red>" + prNum + "%</color>";
+        else
+            prtext = prNum + "%";
+
+        string tips;
+        if (burningNum > 0)
+            tips = "\nTips : Please stop the fire!";
+        else if (unhealthyNum > 0)
+            tips = "\nTips : Cut unhealthy trees.";
+        else if (healthyNum >= 4)
+            tips = "\nTips : The forest is much too dense.";
+        else
+            tips = "";
+
+        string info = "You're using 'Survey'.\nSelected area has a " + prtext + " chance of inflammation." + tips;
+        /*"Survey\n"
+        + "\nHealthy(" + healthyNum + ") "
+        + "Unhealthy(" + unhealthyNum + ") "
+        + "Burning(" + burningNum + ") "
+        + "\nFire danger rating:\t" + "High"
         + "\nDensity:\t"
-        + "\nHint:\tCut unhealthy trees";
+        + "\nHint:\tCut unhealthy trees";*/
         explorationInfoPanel.GetComponentInChildren<Text>().text = info;
 
-        //Close panel
+        //Close panel after few secondss
         StartCoroutine(CloseExplorationInfo());
     }
 
