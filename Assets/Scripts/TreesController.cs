@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -56,6 +57,7 @@ public class TreesController : MonoBehaviour
     public bool isWatering;
     [Header("Water Settings")]
     public float wateringRadius;
+    public GameObject waterPrefab;
     private Color waterCircleColor = new Color(0, 0.5f, 1, 0.5f);
 
     // Cutting
@@ -249,7 +251,9 @@ public class TreesController : MonoBehaviour
                     foreach (GameObject tree in treesList)
                         if (Vector2.Distance(mousePos, tree.transform.position) < wateringRadius)
                             tree.GetComponent<Tree>().StopBurning();
-
+    
+                    GameObject splash = Instantiate(waterPrefab, mousePos, Quaternion.identity);
+                    Destroy(splash, splash.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + 2);
                     audioSource.PlayOneShot(waterAudio, 0.7F);
                     isWatering = false;
                     CloseCircleArea();

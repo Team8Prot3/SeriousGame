@@ -1,0 +1,392 @@
+fileFormatVersion: 2
+guid: 19a6da7dc7d1fa14ab2cff3a8c242fc8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1317785096822608012
+    second: waters_splash_0
+  - first:
+      213: 5329452333512394798
+    second: waters_splash_1
+  - first:
+      213: -1979355621754622851
+    second: waters_splash_2
+  - first:
+      213: -5062092010503273129
+    second: waters_splash_3
+  - first:
+      213: -8920532510125828226
+    second: waters_splash_4
+  - first:
+      213: 3360599832524017917
+    second: waters_splash_5
+  - first:
+      213: 7033441467076227587
+    second: waters_splash_6
+  - first:
+      213: 5831350800835314986
+    second: waters_splash_7
+  - first:
+      213: -8868802921663939183
+    second: waters_splash_0
+  - first:
+      213: -6340955672361004824
+    second: waters_splash_1
+  - first:
+      213: 8542185749374933878
+    second: waters_splash_2
+  - first:
+      213: -817443166645102081
+    second: waters_splash_3
+  - first:
+      213: -3523207888346224693
+    second: waters_splash_4
+  - first:
+      213: 7419112259448976668
+    second: waters_splash_5
+  - first:
+      213: 2722365921850582196
+    second: waters_splash_8
+  - first:
+      213: 5617130995907420669
+    second: waters_splash_9
+  - first:
+      213: 6991370954416095069
+    second: waters_splash_10
+  - first:
+      213: -8143490675377808646
+    second: waters_splash_11
+  - first:
+      213: -4155429553174404871
+    second: waters_splash_12
+  - first:
+      213: -7171785785465448724
+    second: waters_splash_13
+  - first:
+      213: 8384200718699734463
+    second: waters_splash_14
+  - first:
+      213: -4090028865929504625
+    second: waters_splash_15
+  - first:
+      213: -1041743216913886696
+    second: waters_splash_16
+  - first:
+      213: 3705367018858539251
+    second: waters_splash_17
+  - first:
+      213: -8207516028181405921
+    second: waters_splash_18
+  - first:
+      213: -1035304177728679950
+    second: waters_splash_19
+  - first:
+      213: -2674943163566711253
+    second: waters_splash_20
+  - first:
+      213: -2132290021026711085
+    second: waters_splash_21
+  - first:
+      213: 2295223645605002486
+    second: waters_splash_22
+  - first:
+      213: 8083380416952352191
+    second: waters_splash_23
+  - first:
+      213: -4127340313112137531
+    second: waters_splash_24
+  - first:
+      213: 4514050001932756927
+    second: waters_splash_25
+  - first:
+      213: -8921430025934927744
+    second: waters_splash_26
+  - first:
+      213: -5990493369009699551
+    second: waters_splash_27
+  - first:
+      213: 220906981444954124
+    second: waters_splash_6
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: waters_splash_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 46
+        width: 360
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19d364f4bbeabe480800000000000000
+      internalID: -8868802921663939183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waters_splash_1
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 46
+        width: 360
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e09c6c69666008a0800000000000000
+      internalID: -6340955672361004824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waters_splash_2
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 46
+        width: 360
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67b95ec3ea0fb8670800000000000000
+      internalID: 8542185749374933878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waters_splash_3
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 46
+        width: 360
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff95c0c55cbd7a4f0800000000000000
+      internalID: -817443166645102081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waters_splash_4
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 46
+        width: 360
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc7e441a71d0b1fc0800000000000000
+      internalID: -3523207888346224693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waters_splash_5
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 46
+        width: 360
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c15b335ba4bf5f660800000000000000
+      internalID: 7419112259448976668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waters_splash_6
+      rect:
+        serializedVersion: 2
+        x: 2160
+        y: 46
+        width: 360
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c082e6daab1d01300800000000000000
+      internalID: 220906981444954124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

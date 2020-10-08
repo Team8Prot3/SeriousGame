@@ -195,7 +195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2, y: 331}
+  m_AnchoredPosition: {x: -2, y: 416}
   m_SizeDelta: {x: 1.0000057, y: -542}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &151094260
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 600, y: 350}
+  m_CellSize: {x: 600, y: 450}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 2
@@ -367,12 +367,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 1751a7df275631548b2b888069662537, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3209d2ce6583e241a61766eda331db4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 24.800001, y: 38.36133}
+  m_Size: {x: 38.399998, y: 24.806252}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -596,7 +596,7 @@ RectTransform:
   m_GameObject: {fileID: 794712659}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.3, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.2, z: 0}
   m_Children:
   - {fileID: 951260606}
   m_Father: {fileID: 151094259}
@@ -736,7 +736,7 @@ RectTransform:
   m_GameObject: {fileID: 820673461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 5, z: 1}
+  m_LocalScale: {x: 8, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 1674841638}
   m_RootOrder: 0
@@ -885,7 +885,7 @@ RectTransform:
   m_GameObject: {fileID: 890919753}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.3, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.2, z: 0}
   m_Children:
   - {fileID: 1747784926}
   m_Father: {fileID: 151094259}
@@ -1299,7 +1299,7 @@ RectTransform:
   m_GameObject: {fileID: 991882968}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.2, z: 1}
   m_Children:
   - {fileID: 1657578874}
   m_Father: {fileID: 151094259}
@@ -1562,6 +1562,8 @@ MonoBehaviour:
   fireSpreadRadius: 2
   isWatering: 0
   wateringRadius: 1.5
+  waterPrefab: {fileID: 4423249081205839351, guid: 23827ffad5860e94da21c3401df60a2a,
+    type: 3}
   isCutting: 0
   isExploring: 0
   exploringRadius: 2
@@ -2358,7 +2360,7 @@ RectTransform:
   m_GameObject: {fileID: 1674841637}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.3, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.2, z: 0}
   m_Children:
   - {fileID: 820673462}
   m_Father: {fileID: 151094259}
