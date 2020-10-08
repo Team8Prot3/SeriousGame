@@ -16,9 +16,6 @@ public class WinLoseCondition : MonoBehaviour
         treesList = TreesController.instance.GetTreesList();
         WinPanel.SetActive(false);
         LosePanel.SetActive(false);
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            Application.Quit();
     }
 
     // Update is called once per frame
@@ -26,6 +23,9 @@ public class WinLoseCondition : MonoBehaviour
     {
         WinCondition();
         LoseCondition();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
 
     void WinCondition() 
