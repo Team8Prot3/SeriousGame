@@ -63,6 +63,7 @@ public class TreesController : MonoBehaviour
     // Cutting
     [HideInInspector]
     public bool isCutting;
+    public GameObject cutPrefab;
 
     // Exploring
     [HideInInspector]
@@ -273,6 +274,8 @@ public class TreesController : MonoBehaviour
                 // Left mouse click
                 if (Input.GetMouseButtonDown(0))
                 {
+                    GameObject cutObj = Instantiate(cutPrefab, mousePos, Quaternion.identity);
+                    Destroy(cutObj, cutObj.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + 1);
                     audioSource.PlayOneShot(cutAudio, 0.7F);
                     isCutting = false;
                 }

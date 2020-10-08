@@ -1565,6 +1565,8 @@ MonoBehaviour:
   waterPrefab: {fileID: 4423249081205839351, guid: 23827ffad5860e94da21c3401df60a2a,
     type: 3}
   isCutting: 0
+  cutPrefab: {fileID: 6405693801454088381, guid: 1acff62a6aec4a1478e532161e86681c,
+    type: 3}
   isExploring: 0
   exploringRadius: 2
   explorationInfoPanel: {fileID: 1098249316}
