@@ -15,6 +15,7 @@ public class Tree : MonoBehaviour
     public int mutationProbability = 10;    // 0% ~ 100%
     public float mutationIntervalTime = 2;
     private float mutationTimer;
+    public Sprite unhealthySprite;
 
     [Header("Burning Settings")]
     public float burningTime;
@@ -105,7 +106,7 @@ public class Tree : MonoBehaviour
     public void BecomeUnhealthy() 
     {
         ChangeStateTo(State.unhealthy);
-        GetComponent<SpriteRenderer>().color = Color.Lerp(Color.white, Color.gray, 0.5f);
+        GetComponent<SpriteRenderer>().sprite = unhealthySprite;
     }
 
     public void OnMouseDown()

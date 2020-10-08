@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5445124701060380748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.36, y: -4.14, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 13.31, y: 13.58}
+  m_Size: {x: 4.68, y: 4.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mutationProbability: 1
   mutationIntervalTime: 2.5
+  unhealthySprite: {fileID: 21300000, guid: 67b9bea1ff17ef648bbe442142078a2a, type: 3}
   burningTime: 3.5
   fireSpreadTimeHealthy: 2
   fireSpreadTimeUnhealthy: 1
@@ -117,7 +118,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 6.79
+  m_Radius: 2
 --- !u!82 &8788296113746287409
 AudioSource:
   m_ObjectHideFlags: 0
