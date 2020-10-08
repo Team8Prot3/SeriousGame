@@ -20,9 +20,12 @@ public class Tree : MonoBehaviour
     public float burningTime;
     public float fireSpreadTimeHealthy;
     public float fireSpreadTimeUnhealthy;
+    public AudioClip fireAudio;
 
     private float burningTimer;
     private float fireSpreadTimer;
+
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +33,7 @@ public class Tree : MonoBehaviour
         state = State.healthy;
         preState = State.healthy;
         mutationTimer = mutationIntervalTime;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -80,6 +84,8 @@ public class Tree : MonoBehaviour
         if (state == State.burning)
             return;
         ChangeStateTo(State.burning);
+
+        audioSource.PlayOneShot(fireAudio, 0.7F);
         burningTimer = burningTime;
         fireSpreadTimer = fireSpreadTimeHealthy;
         GetComponent<SpriteRenderer>().color = Color.red;

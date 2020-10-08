@@ -71,14 +71,23 @@ public class TreesController : MonoBehaviour
     public float infoDisplayTime = 10f;
     private Color exploreCircleColor = new Color(0.7924f, 0.4182f, 0.3924f, 0.5f);
 
+    //audio
+    AudioSource audioSource;
+    public AudioClip waterAudio;
+    public AudioClip cutAudio;
+    public AudioClip surveyAudio;
+    public AudioClip plantAudio;
 
-    public List<GameObject> GetTreesList() {
+
+    public List<GameObject> GetTreesList()
+    {
         return treesList;
     }
 
     // Start planting a tree
-    public void Plant() {
-        if (!heldTree) 
+    public void Plant()
+    {
+        if (!heldTree)
         {
             isPlanting = true;
             isWatering = false;
@@ -92,7 +101,7 @@ public class TreesController : MonoBehaviour
     }
 
     // Burn the nearest tree from start point
-    public void StartFire() 
+    public void StartFire()
     {
         if (treesList.Count == 0)
             return;
@@ -100,10 +109,10 @@ public class TreesController : MonoBehaviour
         GameObject chosenTree = treesList[0];
         float minDistance = Vector2.Distance(fireStartPos, treesList[0].transform.position);
 
-        foreach (GameObject tree in treesList) 
+        foreach (GameObject tree in treesList)
         {
             float distance = Vector2.Distance(fireStartPos, tree.transform.position);
-            if (distance < minDistance) 
+            if (distance < minDistance)
             {
                 chosenTree = tree;
                 minDistance = distance;
@@ -114,7 +123,7 @@ public class TreesController : MonoBehaviour
     }
 
     // Burn trees in spread range
-    public void SpreadFire(Vector2 startPos) 
+    public void SpreadFire(Vector2 startPos)
     {
         foreach (GameObject tree in treesList)
             if (Vector2.Distance(startPos, tree.transform.position) < fireSpreadRadius)
@@ -144,7 +153,7 @@ public class TreesController : MonoBehaviour
         CloseCircleArea();
     }
 
-    public void Explore() 
+    public void Explore()
     {
         isExploring = true;
         isPlanting = false;
@@ -153,7 +162,7 @@ public class TreesController : MonoBehaviour
         DisplayCircleArea(exploringRadius, exploreCircleColor);
     }
 
-    public void DisplayCircleArea(float radius, Color color) 
+    public void DisplayCircleArea(float radius, Color color)
     {
         circleArea.SetActive(true);
         circleArea.GetComponent<SpriteRenderer>().color = color;
@@ -175,12 +184,13 @@ public class TreesController : MonoBehaviour
             for (int i = 0; i < UnityEngine.Random.Range(minInitNum, maxInitNum + 1); i++)
             {
                 Vector2 treePos;
-                while (true) {
+                while (true)
+                {
                     treePos = circularRangeCenter + UnityEngine.Random.insideUnitCircle * circularRangeRadius;
                     if (treePos.y > circularRangeBottom)
                         break;
                 }
-                
+
                 GameObject tree = Instantiate(treePrefab, treesParent.transform);
                 tree.transform.position = treePos;
                 treesList.Add(tree);
@@ -191,6 +201,8 @@ public class TreesController : MonoBehaviour
         heldTree = null;
 
         explorationInfoPanel.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -213,6 +225,7 @@ public class TreesController : MonoBehaviour
                     heldTree.transform.parent = treesParent.transform;
                     treesList.Add(heldTree);
 
+                    audioSource.PlayOneShot(plantAudio, 0.7F);
                     isPlanting = false;
                     heldTree = null;
                 }
@@ -222,7 +235,7 @@ public class TreesController : MonoBehaviour
         }
 
         //Water chosen tree
-        if(isWatering)
+        if (isWatering)
         {
             // Get mousepos
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -237,6 +250,7 @@ public class TreesController : MonoBehaviour
                         if (Vector2.Distance(mousePos, tree.transform.position) < wateringRadius)
                             tree.GetComponent<Tree>().StopBurning();
 
+                    audioSource.PlayOneShot(waterAudio, 0.7F);
                     isWatering = false;
                     CloseCircleArea();
                 }
@@ -255,13 +269,14 @@ public class TreesController : MonoBehaviour
                 // Left mouse click
                 if (Input.GetMouseButtonDown(0))
                 {
+                    audioSource.PlayOneShot(cutAudio, 0.7F);
                     isCutting = false;
                 }
             }
 
         }
 
-        if (isExploring) 
+        if (isExploring)
         {
             // Get mousepos
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -271,20 +286,21 @@ public class TreesController : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     ShowExplorationInfo(mousePos);
+                    audioSource.PlayOneShot(surveyAudio, 0.7F);
                     isExploring = false;
                     CloseCircleArea();
                 }
             }
         }
 
-        if (circleArea.activeSelf) 
+        if (circleArea.activeSelf)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             circleArea.transform.position = mousePos;
         }
     }
 
-    private void ShowExplorationInfo(Vector2 pos) 
+    private void ShowExplorationInfo(Vector2 pos)
     {
         explorationInfoPanel.SetActive(true);
 
@@ -292,9 +308,9 @@ public class TreesController : MonoBehaviour
         int unhealthyNum = 0;
         int burningNum = 0;
 
-        foreach (GameObject tree in treesList) 
+        foreach (GameObject tree in treesList)
         {
-            if (Vector2.Distance(pos, tree.transform.position) < exploringRadius) 
+            if (Vector2.Distance(pos, tree.transform.position) < exploringRadius)
             {
                 State _s = tree.GetComponent<Tree>().GetState();
                 if (_s == State.healthy)
