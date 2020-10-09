@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,6 +44,8 @@ public class TreesController : MonoBehaviour
     // Fire
     [Header("Fire Settings")]
     public Vector2 fireStartPos;
+    public Queue<Vector2> burnedTreesLocation = new Queue<Vector2>();
+    public float burnedAreaRadius;
 
     // Trees
     private GameObject treesParent;
@@ -48,7 +53,8 @@ public class TreesController : MonoBehaviour
 
     // Planting 
     private bool isPlanting;
-    private GameObject heldTree;
+    private List<GameObject> heldTrees = new List<GameObject>();
+    public float fertilGroundTime;
 
     // Watering
     [HideInInspector]
@@ -88,16 +94,17 @@ public class TreesController : MonoBehaviour
     // Start planting a tree
     public void Plant()
     {
-        if (!heldTree)
+        if (!heldTrees.Any())
         {
             isPlanting = true;
             isWatering = false;
             isCutting = false;
             isExploring = false;
             CloseCircleArea();
-            heldTree = Instantiate(treePrefab);
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            GameObject heldTree = Instantiate(treePrefab);
             heldTree.transform.position = mousePos;
+            heldTrees.Add(heldTree);
         }
     }
 
@@ -175,6 +182,20 @@ public class TreesController : MonoBehaviour
         circleArea.SetActive(false);
     }
 
+    public void AddBurnedTreeLocation(Vector2 burnedTreePos)
+    {
+        burnedTreesLocation.Enqueue(burnedTreePos);
+        StartCoroutine(DequeBurnedTreeLocation());
+    }
+
+    IEnumerator DequeBurnedTreeLocation()
+    {
+        yield return new WaitForSeconds(fertilGroundTime);
+        burnedTreesLocation.Dequeue();
+    }
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -200,7 +221,7 @@ public class TreesController : MonoBehaviour
         }
 
         isPlanting = false;
-        heldTree = null;
+        heldTrees.Clear();
 
         explorationInfoPanel.SetActive(false);
 
@@ -211,29 +232,64 @@ public class TreesController : MonoBehaviour
     void Update()
     {
         // Plant the held tree
-        if (isPlanting && heldTree)
+        if (isPlanting && heldTrees.Any())
         {
             // Get mousepos
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            heldTree.transform.position = mousePos;
+            if (IsInFertilArea(mousePos))
+            {         
+                if(heldTrees.Count < 3)
+                {
+                    heldTrees.Add(Instantiate(treePrefab));
+                }
+
+            }
+            else
+            {
+                if (heldTrees.Count > 1)
+                {
+                    for(int i = 1; i < 2; i++)
+                    {
+                        GameObject o = heldTrees[i];
+                        heldTrees.RemoveAt(i);
+                        Destroy(o);
+                    }
+                }
+            }
+
+            float posVariation = 0;
+            foreach(GameObject heldTree in  heldTrees)
+            {
+                heldTree.transform.position = mousePos;
+                heldTree.transform.position += Vector3.right * posVariation;
+
+                if (IsInCircularRange(heldTree.transform.position))
+                {
+                    heldTree.GetComponent<SpriteRenderer>().color = Color.white;
+                }
+                else
+                    heldTree.GetComponent<SpriteRenderer>().color = Color.gray;
+
+                posVariation += 1;
+
+            }
 
             if (IsInCircularRange(mousePos))
             {
-                heldTree.GetComponent<SpriteRenderer>().color = Color.white;
-
                 // Left mouse click
                 if (Input.GetMouseButtonDown(0))
                 {
-                    heldTree.transform.parent = treesParent.transform;
-                    treesList.Add(heldTree);
-
+                    foreach (GameObject heldTree in heldTrees)
+                    {
+                        heldTree.transform.parent = treesParent.transform;
+                        treesList.Add(heldTree);
+                    }
                     audioSource.PlayOneShot(plantAudio, 0.7F);
                     isPlanting = false;
-                    heldTree = null;
+                    heldTrees.Clear();
                 }
             }
-            else
-                heldTree.GetComponent<SpriteRenderer>().color = Color.gray;
+         
         }
 
         //Water chosen tree
@@ -391,6 +447,18 @@ public class TreesController : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    private bool IsInFertilArea(Vector2 _pos)
+    {
+
+        foreach (Vector2 burnedArea in burnedTreesLocation)
+        {
+            if (Vector2.Distance(_pos, burnedArea) < burnedAreaRadius)
+                return true;
+        }
+
+        return false;
     }
 
 }

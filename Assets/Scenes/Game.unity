@@ -2017,6 +2017,8 @@ MonoBehaviour:
   minInitNum: 20
   maxInitNum: 25
   fireStartPos: {x: 2.5, y: -2.21}
+  burnedAreaRadius: 2
+  fertilGroundTime: 10
   isWatering: 0
   wateringRadius: 1.5
   waterPrefab: {fileID: 4423249081205839351, guid: 23827ffad5860e94da21c3401df60a2a,
@@ -2834,7 +2836,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 430.89844, y: -1293}
+  m_AnchoredPosition: {x: 431, y: -1293}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1545766745
