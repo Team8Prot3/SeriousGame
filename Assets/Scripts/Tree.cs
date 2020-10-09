@@ -61,6 +61,7 @@ public class Tree : MonoBehaviour
             burningTimer -= Time.deltaTime;
             if (burningTimer <= 0)
             {
+                TreesController.instance.AddBurnedTreeLocation(gameObject.transform.position);
                 Destroy(gameObject);
                 TreesController.instance.RemoveTree(gameObject);
             }

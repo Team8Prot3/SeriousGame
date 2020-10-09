@@ -41,6 +41,8 @@ public class TreesController : MonoBehaviour
     // Fire
     [Header("Fire Settings")]
     public Vector2 fireStartPos;
+    public Queue<Vector2> burnedTreesLocation = new Queue<Vector2>();
+    public float burnedAreaRadius;
 
     // Trees
     private GameObject treesParent;
@@ -49,6 +51,7 @@ public class TreesController : MonoBehaviour
     // Planting 
     private bool isPlanting;
     private GameObject heldTree;
+    public float fertilGroundTime;
 
     // Watering
     [HideInInspector]
@@ -95,8 +98,8 @@ public class TreesController : MonoBehaviour
             isCutting = false;
             isExploring = false;
             CloseCircleArea();
-            heldTree = Instantiate(treePrefab);
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            heldTree = Instantiate(treePrefab);
             heldTree.transform.position = mousePos;
         }
     }
@@ -175,6 +178,21 @@ public class TreesController : MonoBehaviour
         circleArea.SetActive(false);
     }
 
+    public void AddBurnedTreeLocation(Vector2 burnedTreePos)
+    {
+        burnedTreesLocation.Enqueue(burnedTreePos);
+
+        StartCoroutine(DequeBurnedTreeLocation());
+    }
+
+    IEnumerator DequeBurnedTreeLocation()
+    {
+        yield return new WaitForSeconds(fertilGroundTime);
+        burnedTreesLocation.Dequeue();
+    }
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -215,6 +233,10 @@ public class TreesController : MonoBehaviour
         {
             // Get mousepos
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (IsInFertilArea(mousePos))
+            {
+                UnityEngine.Debug.Log("in fertile area");
+            }
             heldTree.transform.position = mousePos;
 
             if (IsInCircularRange(mousePos))
@@ -391,6 +413,19 @@ public class TreesController : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    private bool IsInFertilArea(Vector2 _pos)
+    {
+        foreach (Vector2 burnedArea in burnedTreesLocation)
+        {
+            if (Vector2.Distance(_pos, burnedArea) < burnedAreaRadius)
+                return true;
+            else
+                return false;
+        }
+
+        return false;
     }
 
 }
