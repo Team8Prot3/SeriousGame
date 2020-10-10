@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -75,10 +74,14 @@ public class TreesController : MonoBehaviour
     [Header("Exploration Settings")]
     public float exploringRadius;
     public GameObject explorationInfoPanel;
-    public float infoDisplayTime = 10f;
+    public GameObject educationalPanel;
+    public string[] educationalText;
+
     private Color exploreCircleColor = new Color(0.7924f, 0.4182f, 0.3924f, 0.5f);
+    private bool isPaused = false;
 
     //audio
+    [Header("Audio")]
     AudioSource audioSource;
     public AudioClip waterAudio;
     public AudioClip cutAudio;
@@ -195,8 +198,6 @@ public class TreesController : MonoBehaviour
     }
 
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -224,6 +225,8 @@ public class TreesController : MonoBehaviour
         heldTrees.Clear();
 
         explorationInfoPanel.SetActive(false);
+        educationalPanel.SetActive(false);
+        isPaused = false;
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -231,6 +234,10 @@ public class TreesController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Click to resume (from survey pause)
+        if (isPaused && Input.GetMouseButtonDown(0))
+            CloseSurveyInfo();
+
         // Plant the held tree
         if (isPlanting && heldTrees.Any())
         {
@@ -347,7 +354,7 @@ public class TreesController : MonoBehaviour
                 // Left mouse click
                 if (Input.GetMouseButtonDown(0))
                 {
-                    ShowExplorationInfo(mousePos);
+                    ShowSurveyInfo(mousePos);
                     audioSource.PlayOneShot(surveyAudio, 0.7F);
                     isExploring = false;
                     CloseCircleArea();
@@ -362,8 +369,9 @@ public class TreesController : MonoBehaviour
         }
     }
 
-    private void ShowExplorationInfo(Vector2 pos)
+    private void ShowSurveyInfo(Vector2 pos)
     {
+        // 1 Show exploration info
         explorationInfoPanel.SetActive(true);
 
         int healthyNum = 0;
@@ -390,41 +398,34 @@ public class TreesController : MonoBehaviour
         else
             prNum = 5 * healthyNum + 10 * unhealthyNum;
 
-        // Info text
+        // Survey text
         string prtext;
         if (prNum >= 20)
             prtext = "<color=red>" + prNum + "%</color>";
         else
             prtext = prNum + "%";
 
-        string tips;
-        if (burningNum > 0)
-            tips = "\nTips : Please stop the fire!";
-        else if (unhealthyNum > 0)
-            tips = "\nTips : Cut unhealthy trees.";
-        else if (healthyNum >= 4)
-            tips = "\nTips : The forest is much too dense.";
-        else
-            tips = "";
-
-        string info = "You're using 'Survey'.\nSelected area has a " + prtext + " chance of inflammation." + tips;
-        /*"Survey\n"
-        + "\nHealthy(" + healthyNum + ") "
-        + "Unhealthy(" + unhealthyNum + ") "
-        + "Burning(" + burningNum + ") "
-        + "\nFire danger rating:\t" + "High"
-        + "\nDensity:\t"
-        + "\nHint:\tCut unhealthy trees";*/
+        string info = "<b>Survey</b>\nSelected area has a " + prtext + " chance of inflammation" + "\n<color=grey>Click to resume</color>";
         explorationInfoPanel.GetComponentInChildren<Text>().text = info;
 
-        //Close panel after few secondss
-        StartCoroutine(CloseExplorationInfo());
+
+        // 2 Show Educational text
+        educationalPanel.SetActive(true);
+        if (educationalText.Length != 0)
+            educationalPanel.GetComponentInChildren<Text>().text = educationalText[Random.Range(0, educationalText.Length)];
+
+        // Pause the game
+        Time.timeScale = 0;
+        isPaused = true;
     }
 
-    IEnumerator CloseExplorationInfo()
+    private void CloseSurveyInfo()
     {
-        yield return new WaitForSeconds(infoDisplayTime);
+        isPaused = false;
+        Time.timeScale = 1;
+
         explorationInfoPanel.SetActive(false);
+        educationalPanel.SetActive(false);
     }
 
     private void OnDrawGizmos()
