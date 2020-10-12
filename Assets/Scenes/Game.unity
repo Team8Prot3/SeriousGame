@@ -2155,6 +2155,8 @@ MonoBehaviour:
   maxInitNum: 25
   fireStartPos: {x: 2.5, y: -2.21}
   burnedAreaRadius: 2
+  burnedAreaPrefab: {fileID: 1357311382843325314, guid: 0d37ba86b745ee041b95704d73e9e6f4,
+    type: 3}
   fertilGroundTime: 10
   isWatering: 0
   wateringRadius: 1.5
