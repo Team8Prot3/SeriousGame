@@ -45,6 +45,8 @@ public class TreesController : MonoBehaviour
     public Vector2 fireStartPos;
     public Queue<Vector2> burnedTreesLocation = new Queue<Vector2>();
     public float burnedAreaRadius;
+    public GameObject burnedAreaPrefab;
+    private GameObject burnedAreaParent;
 
     // Trees
     private GameObject treesParent;
@@ -77,7 +79,7 @@ public class TreesController : MonoBehaviour
     public GameObject educationalPanel;
     public string[] educationalText;
 
-    private Color exploreCircleColor = new Color(0.7924f, 0.4182f, 0.3924f, 0.5f);
+    private Color exploreCircleColor = new Color(0.6424f, 0.9482f, 0.1224f, 0.5f);
     private bool isPaused = false;
 
     //audio
@@ -188,6 +190,7 @@ public class TreesController : MonoBehaviour
     public void AddBurnedTreeLocation(Vector2 burnedTreePos)
     {
         burnedTreesLocation.Enqueue(burnedTreePos);
+        DisplayBurnedArea(burnedTreePos);
         StartCoroutine(DequeBurnedTreeLocation());
     }
 
@@ -197,12 +200,28 @@ public class TreesController : MonoBehaviour
         burnedTreesLocation.Dequeue();
     }
 
+    public void DisplayBurnedArea(Vector2 pos)
+    {
+        GameObject burnedArea = Instantiate(burnedAreaPrefab, burnedAreaParent.transform);
+        burnedArea.transform.position = pos;
+        burnedArea.transform.localScale = Vector2.one * burnedAreaRadius;
+        StartCoroutine(CloseBurnedArea(burnedArea));
+    }
+
+    IEnumerator CloseBurnedArea(GameObject burnedAreaObject)
+    {
+        yield return new WaitForSeconds(fertilGroundTime);
+        Destroy(burnedAreaObject);
+
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
         //Initialize trees (Random number & Random positions)
         treesParent = new GameObject("TreesParent");
+        burnedAreaParent = new GameObject("BurnedAreaParent");
         if (minInitNum > 0 && minInitNum <= maxInitNum)
         {
             for (int i = 0; i < UnityEngine.Random.Range(minInitNum, maxInitNum + 1); i++)
