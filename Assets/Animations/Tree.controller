@@ -129,7 +129,7 @@ AnimatorStateMachine:
     m_Position: {x: 534.6221, y: 192.60907, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4822507586172902243}
-    m_Position: {x: 503.78192, y: 7.5681686, z: 0}
+    m_Position: {x: 500, y: 10, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 1224699698658256640}
@@ -177,7 +177,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Tree_Fire
-  m_Speed: 1
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4387302235068028493}
