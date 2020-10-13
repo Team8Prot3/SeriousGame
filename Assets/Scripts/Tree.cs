@@ -29,6 +29,7 @@ public class Tree : MonoBehaviour
     private float fireSpreadTimer;
 
     AudioSource audioSource;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,7 @@ public class Tree : MonoBehaviour
         preState = State.healthy;
         mutationTimer = mutationIntervalTime;
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -96,9 +98,9 @@ public class Tree : MonoBehaviour
         if (state == State.burning)
             return;
         ChangeStateTo(State.burning);
-
+        animator.SetBool("isBurning", true);
         audioSource.PlayOneShot(fireAudio, 0.7F);
-        GetComponent<SpriteRenderer>().color = Color.red;
+      //  GetComponent<SpriteRenderer>().color = Color.red;
 
         burningTimer = burningTime;
         if(preState == State.healthy)
@@ -111,7 +113,8 @@ public class Tree : MonoBehaviour
     {
         if (state == State.burning) {
             ChangeStateTo(preState);
-            GetComponent<SpriteRenderer>().color = Color.white;
+            animator.SetBool("isBurning", false);
+           // GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
 
