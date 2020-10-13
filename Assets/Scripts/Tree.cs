@@ -100,7 +100,7 @@ public class Tree : MonoBehaviour
         ChangeStateTo(State.burning);
         animator.SetBool("isBurning", true);
         audioSource.PlayOneShot(fireAudio, 0.7F);
-      //  GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<SpriteRenderer>().sortingOrder += 1;
 
         burningTimer = burningTime;
         if(preState == State.healthy)
@@ -114,7 +114,7 @@ public class Tree : MonoBehaviour
         if (state == State.burning) {
             ChangeStateTo(preState);
             animator.SetBool("isBurning", false);
-           // GetComponent<SpriteRenderer>().color = Color.white;
+            GetComponent<SpriteRenderer>().sortingOrder -= 1;
         }
     }
 

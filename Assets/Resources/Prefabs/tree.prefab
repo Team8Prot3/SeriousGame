@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: f0f4406172edf1f428d489baadc24b1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,11 +100,11 @@ MonoBehaviour:
   mutationProbability: 1
   mutationIntervalTime: 2
   unhealthySprite: {fileID: 21300000, guid: 67b9bea1ff17ef648bbe442142078a2a, type: 3}
-  burningTime: 2.5
-  fireSpreadTimeHealthy: 1.5
+  burningTime: 3.5
+  fireSpreadTimeHealthy: 2.5
   fireSpreadTimeUnhealthy: 1
   fireSpreadRadiusHealthy: 2.5
-  fireSpreadRadiusUnhealthy: 3.5
+  fireSpreadRadiusUnhealthy: 4
   fireAudio: {fileID: 8300000, guid: c3c21191e75c5a54d80bf23ef8f8f9db, type: 3}
 --- !u!58 &7011730270448377058
 CircleCollider2D:

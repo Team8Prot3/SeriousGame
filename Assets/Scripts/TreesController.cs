@@ -76,7 +76,8 @@ public class TreesController : MonoBehaviour
     [Header("Exploration Settings")]
     public float exploringRadius;
     public GameObject explorationInfoPanel;
-    public GameObject educationalPanel;
+    public GameObject educationalPanel1;
+    public GameObject educationalPanel2;
     public string[] educationalText;
 
     private Color exploreCircleColor = new Color(0.6424f, 0.9482f, 0.1224f, 0.5f);
@@ -90,6 +91,8 @@ public class TreesController : MonoBehaviour
     public AudioClip surveyAudio;
     public AudioClip plantAudio;
 
+    [Header("Count Trees")]
+    public Text treesCountText;
 
     public List<GameObject> GetTreesList()
     {
@@ -244,7 +247,8 @@ public class TreesController : MonoBehaviour
         heldTrees.Clear();
 
         explorationInfoPanel.SetActive(false);
-        educationalPanel.SetActive(false);
+        educationalPanel1.SetActive(false);
+        educationalPanel2.SetActive(false);
         isPaused = false;
 
         audioSource = GetComponent<AudioSource>();
@@ -253,6 +257,8 @@ public class TreesController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        treesCountText.text = treesList.Count + "/40";
+
         // Click to resume (from survey pause)
         if (isPaused && Input.GetMouseButtonDown(0))
             CloseSurveyInfo();
@@ -287,7 +293,14 @@ public class TreesController : MonoBehaviour
             foreach(GameObject heldTree in  heldTrees)
             {
                 heldTree.transform.position = mousePos;
-                heldTree.transform.position += Vector3.right * posVariation;
+                if (heldTrees.Count > 1) {
+                    if (posVariation == 0)
+                        heldTree.transform.position += Vector3.up;
+                    else if (posVariation == 1)
+                        heldTree.transform.position += Vector3.left + Vector3.down;
+                    else if (posVariation == 2)
+                        heldTree.transform.position += Vector3.right + Vector3.down;
+                }
 
                 if (IsInCircularRange(heldTree.transform.position))
                 {
@@ -374,6 +387,8 @@ public class TreesController : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     ShowSurveyInfo(mousePos);
+                    if (GetComponent<Fire>())
+                        GetComponent<Fire>().causeUI.SetActive(false);
                     audioSource.PlayOneShot(surveyAudio, 0.7F);
                     isExploring = false;
                     CloseCircleArea();
@@ -424,15 +439,26 @@ public class TreesController : MonoBehaviour
         else
             prtext = prNum + "%";
 
-        string info = "<b>Survey</b>\nSelected area has a " + prtext + " chance of inflammation" + "\n<color=grey>Click to resume</color>";
+        string info = "Selected area has a " + prtext + " chance of inflammation";
         explorationInfoPanel.GetComponentInChildren<Text>().text = info;
 
 
         // 2 Show Educational text
-        educationalPanel.SetActive(true);
+        string chosen_text = "";
         if (educationalText.Length != 0)
-            educationalPanel.GetComponentInChildren<Text>().text = educationalText[Random.Range(0, educationalText.Length)];
+            chosen_text = educationalText[Random.Range(0, educationalText.Length)];
 
+        if (Random.Range(0, 2) == 0)
+        {
+            educationalPanel1.SetActive(true);
+            educationalPanel1.GetComponentInChildren<Text>().text = chosen_text;
+        }
+        else
+        {
+            educationalPanel2.SetActive(true);
+            educationalPanel2.GetComponentInChildren<Text>().text = chosen_text;
+        }
+        
         // Pause the game
         Time.timeScale = 0;
         isPaused = true;
@@ -444,7 +470,8 @@ public class TreesController : MonoBehaviour
         Time.timeScale = 1;
 
         explorationInfoPanel.SetActive(false);
-        educationalPanel.SetActive(false);
+        educationalPanel1.SetActive(false);
+        educationalPanel2.SetActive(false);
     }
 
     private void OnDrawGizmos()

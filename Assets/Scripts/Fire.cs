@@ -48,7 +48,7 @@ public class Fire : MonoBehaviour
             if (causeTexts.Length != 0)
             {
                 causeUI.SetActive(true);
-                causeUI.GetComponentInChildren<Text>().text = causeTexts[Random.Range(0, causeTexts.Length)];
+                causeUI.GetComponentInChildren<Text>().text = causeTexts[Random.Range(0, causeTexts.Length)].Replace("\\n", "\n");
 
                 Vector2 selectedTreePos = Camera.main.WorldToScreenPoint(selectedTree.transform.position);
                 causeUI.transform.position = selectedTreePos + new Vector2(0, 140);
