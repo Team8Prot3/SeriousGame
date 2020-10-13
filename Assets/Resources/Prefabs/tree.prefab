@@ -100,7 +100,7 @@ MonoBehaviour:
   mutationProbability: 1
   mutationIntervalTime: 2
   unhealthySprite: {fileID: 21300000, guid: 67b9bea1ff17ef648bbe442142078a2a, type: 3}
-  burningTime: 3.5
+  burningTime: 3
   fireSpreadTimeHealthy: 2.5
   fireSpreadTimeUnhealthy: 1
   fireSpreadRadiusHealthy: 2.5
