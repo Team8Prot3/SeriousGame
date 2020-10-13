@@ -121,6 +121,7 @@ public class Tree : MonoBehaviour
     public void BecomeUnhealthy() 
     {
         ChangeStateTo(State.unhealthy);
+        animator.SetBool("isUnhealthy", true);
         GetComponent<SpriteRenderer>().sprite = unhealthySprite;
     }
 
